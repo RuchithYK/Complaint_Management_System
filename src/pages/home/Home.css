@@ -1,0 +1,132 @@
+/* Home.css */
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 5vh 10vw;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+  }
+  
+  /* Split Heading Animation */
+  @keyframes splitIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .home h1 {
+    font-size: 15vh;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+    margin: 0 0 3rem 0;
+    animation: splitIn 1s ease forwards;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Login Card Container */
+  .login-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  
+  /* Neon Gradient Card Style */
+  .login-options a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    height: 140px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 0;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+  }
+  
+  .login-options a::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00f2fe, #4facfe, #00f2fe, #4facfe);
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    animation: neonFlow 10s linear infinite;
+    border-radius: 20px;
+  }
+  
+  .login-options a:hover::before {
+    opacity: 1;
+    filter: blur(20px);
+  }
+  
+  .login-options a::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 18px;
+    z-index: -1;
+  }
+  
+  /* Glow Animation */
+  @keyframes neonFlow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .login-options a:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .home h1 {
+      font-size: 12vh;
+    }
+  
+    .login-options {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .login-options a {
+      width: 90%;
+    }
+  }
+  
