@@ -26,19 +26,40 @@ const RegisterEngineer = () => {
   };
 
   return (
-    <div className="register-engineer">
-      <h2>Register New Engineer</h2>
-      <form className="reg-form" onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input name="name" value={formData.name} onChange={handleChange} required />
+    <div className="register-engineer-container">
+      <h2 className="register-title">Register New Engineer</h2>
+      <form className="register-form" onSubmit={handleSubmit}>
+        <label className="register-label">Name:</label>
+        <input
+          className="register-input"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
 
-        <label>Department:</label>
-        <input name="department" value={formData.department} onChange={handleChange} required />
+        <label className="register-label">Department:</label>
+        <input
+          className="register-input"
+          name="department"
+          value={formData.department}
+          onChange={handleChange}
+          required
+        />
 
-        <label>Password:</label>
-        <input name="password" type="password" value={formData.password} onChange={handleChange} required />
+        <label className="register-label">Password:</label>
+        <input
+          className="register-input"
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
 
-        <button className="reg-btn" type="submit">Register Engineer</button>
+        <button className="register-btn" type="submit">
+          Register Engineer
+        </button>
       </form>
     </div>
   );

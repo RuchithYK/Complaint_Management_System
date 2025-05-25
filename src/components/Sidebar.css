@@ -1,99 +1,120 @@
-/* Sidebar.css */
-
-.dashboard-container {
+/* Sidebar layout */
+.layout {
   display: flex;
-  min-height: 100vh;
-  background-color: #0e0e0e;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  font-family: sans-serif;
 }
 
+/* Sidebar */
 .sidebar {
-  width: 250px;
-  background: linear-gradient(#121212, #121212) padding-box,
-    linear-gradient(to bottom right, #1cb0ff, #40ff99) border-box;
-  border-right: 2px solid transparent;
-  padding: 2rem 1rem;
-  color: #ffffff;
+  width: 100%;
+  background-color:white;
+  color: black;
+  padding: 20px;
   display: flex;
-  flex-direction: column;
-  box-shadow: 0 0 15px rgba(28, 176, 255, 0.1);
 }
 
-.sidebar h2 {
-  font-size: 24px;
-  margin-bottom: 2rem;
-  text-align: center;
-  background: linear-gradient(to right, #1cb0ff, #40ff99);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.nav-link {
-  display: block;
-  margin: 1rem 0;
-  padding: 10px 16px;
-  color: #dcdcdc;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.nav-link:hover {
-  background-color: #1cb0ff22;
-  box-shadow: 0 0 8px #1cb0ff;
-  color: #ffffff;
-}
-
-.nav-link.active {
-  background-color: #1cb0ff33;
-  color: #1cb0ff;
+#sidebar-title {
+  font-size: 2rem;
   font-weight: bold;
-  box-shadow: 0 0 10px #1cb0ff;
+  margin-bottom: 30px;
+  margin-right: 50px;
 }
 
-.main-content {
-  flex-grow: 1;
+.nav-links {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-bottom: 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Main container */
+.main-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  background: #0f0f0f;
-  color: #ffffff;
-  padding: 2rem;
-  min-height: 100vh; /* optional */
 }
 
-.top-bar {
+/* Top bar */
+.topbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  background-color: #121212;
-  padding: 16px 24px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(28, 176, 255, 0.1);
-  margin-bottom: 2rem; /* Add margin for spacing below */
+  height: 30px;
+  padding: 0 20px;
+  background-color: rgba(0, 0, 0, 0.292);
+  border-bottom: 1px solid #ccc;
 }
 
-.top-bar h1 {
-  font-size: 24px;
-  margin: 0; /* Fix vertical misalignment */
-  color: #ffffff;
-}
-
-
-.logout-button {
-  padding: 10px 16px;
-  background: linear-gradient(120deg, #ff4e4e, #ff7575);
-  color: #fff;
+/* Logout button */
+.logout-btn {
+  background-color: #f2402d;
   border: none;
-  border-radius: 6px;
+  color: white;
   cursor: pointer;
-  font-weight: 600;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(226, 18, 18, 0.397);
   transition: all 0.3s ease;
+  text-align: center;
+  display: flex;
+  margin-top: 26px;
+  margin-left: 10px;
+  padding: 1rem;
+
 }
 
-.logout-button:hover {
-  background: linear-gradient(120deg, #ff6a6a, #ff9898);
-  box-shadow: 0 0 10px #ff4e4e;
+.logout-btn:hover {
+  background-color: #f12009;
+  color: white;
+  transform: translateY(-8px);
+  box-shadow: 0 4px 20px rgba(226, 18, 18, 0.397);
 }
 
+/* Main content area */
+.content-area {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+#side-links{
+    text-decoration: none; /* Removes the underline */
+    color: black; /* Sets text color */
+    padding: 0.5rem 0.5rem; /* Adds spacing for button-like effect */
+    background-color: whitesmoke; /* Background color of the button */
+    border-radius: 10px; /* Rounds corners */
+    display: inline-block; /* Makes it behave like a button */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.237);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.203);
+    text-align: center;
+    padding: 1rem;
+    margin-right: 8px;
+}
+
+#side-links:hover {
+    background-color: black;
+    color: white;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15); /* Changes color when hovered */
+}
+
+#side-links.active {
+  background-color: black;
+  color: white;
+}
+
+.side-links-container{
+  width:200px;
+  margin-top: 25px;
+}

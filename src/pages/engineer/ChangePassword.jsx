@@ -10,28 +10,32 @@ const ChangePassword = ({ username }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (newPassword !== confirmPassword) {
       setMessage("New passwords do not match");
       return;
     }
 
     try {
-      const res = await axios.put(`http://localhost:5000/api/engineer/change-password/${username}`, {
+      await axios.put(`http://localhost:5000/api/engineer/change-password/${username}`, {
         oldPassword,
-        newPassword
+        newPassword,
       });
-      
+
       setMessage("Password updated successfully");
+      setOldPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
     } catch (err) {
-      console.error(err);
-      setMessage(err.response?.data?.message || "Error occurred");
+      console.error("Error:", err);
+      setMessage(err.response?.data?.message || "Error updating password");
     }
   };
 
   return (
     <div className="change-password-page">
       <h2>Change Password</h2>
-      <form className="changepass-form"onSubmit={handleSubmit}>
+      <form className="changepass-form" onSubmit={handleSubmit}>
         <input
           type="password"
           placeholder="Old Password"
@@ -53,7 +57,9 @@ const ChangePassword = ({ username }) => {
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
-        <button className="changepass-btn" type="submit">Update Password</button>
+        <button className="changepass-btn" type="submit">
+          Update Password
+        </button>
       </form>
       {message && <p className="status">{message}</p>}
     </div>

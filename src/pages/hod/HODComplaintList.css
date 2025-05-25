@@ -1,58 +1,73 @@
-.complaint-list {
-  padding: 20px;
+.hod-list-container {
+  padding: 30px;
+  background-color: #f4f6f8;
   font-family: Arial, sans-serif;
 }
 
-.complaint-list h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #333;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-th, td {
-  padding: 12px 15px;
+.hod-list-heading {
+  font-size: 26px;
   text-align: center;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #2c3e50;
 }
 
-th {
-  background-color: #4CAF50;
-  color: white;
+.hod-list-header,
+.hod-list-row {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 2fr 1fr 1.5fr 1.5fr 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 14px 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.hod-list-header {
+  background-color: #dfe6e9;
   font-weight: bold;
-  text-transform: uppercase;
+  color: #2d3436;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2;
+.hod-list-row {
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-tr:hover {
-  background-color: #eafaf1;
+.hod-list-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
-td {
-  color: #555;
-}
-
-select {
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background-color: #fff;
+.hod-list-desc {
+  word-wrap: break-word;
+  white-space: pre-wrap;
   font-size: 14px;
-  cursor: pointer;
 }
 
-select:focus {
+.hod-list-select {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  font-size: 14px;
+}
+
+.hod-list-select:focus {
   outline: none;
-  border-color: #4CAF50;
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  border-color: #0984e3;
+  background-color: #fff;
+}
+
+.hod-list-assigned {
+  padding: 6px 12px;
+  background-color: #00b894;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
 }

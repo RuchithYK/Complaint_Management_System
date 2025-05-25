@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import "./EngineerList.css";
+import "./EnginnerList.css";
 
 const EngineerList = () => {
   const [engineers, setEngineers] = useState([]);
@@ -21,37 +21,34 @@ const EngineerList = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/api/hod/engineers/${id}`);
-      fetchEngineers(); // refresh list
+      fetchEngineers();
     } catch (error) {
       console.error("Error deleting engineer", error);
     }
   };
 
   return (
-    <div className="engineer-list">
-      <h2>Engineer List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Department</th>
-            <th>Password</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {engineers.map((eng) => (
-            <tr key={eng._id}>
-              <td>{eng.name}</td>
-              <td>{eng.department}</td>
-              <td>{eng.password}</td>
-              <td>
-                <button onClick={() => handleDelete(eng._id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="engineer-list-container">
+      <h2 className="engineer-heading">Engineer List</h2>
+      <div className="engineer-list-header">
+        <div>Name</div>
+        <div>Department</div>
+        <div>Password</div>
+        <div>Action</div>
+      </div>
+
+      {engineers.map((eng) => (
+        <div className="engineer-list-row" key={eng._id}>
+          <div>{eng.name}</div>
+          <div>{eng.department}</div>
+          <div>{eng.password}</div>
+          <div>
+            <button className="delete-btn" onClick={() => handleDelete(eng._id)}>
+              Delete
+            </button>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

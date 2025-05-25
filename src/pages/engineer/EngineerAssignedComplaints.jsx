@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./EngineerAssignedComplaints.css";
 
 const EngineerAssignedComplaints = ({ engineer }) => {
   const [assignedComplaints, setAssignedComplaints] = useState([]);
@@ -22,33 +23,35 @@ const EngineerAssignedComplaints = ({ engineer }) => {
   }, [engineer]);
 
   return (
-    <div style={{ padding: "1rem" }}>
-      <h2>New Assigned Complaints</h2>
+    <div className="complaint-list-container">
+      <h2 className="complaint-heading">New Assigned Complaints</h2>
+
       {assignedComplaints.length === 0 ? (
-        <p>No new complaints assigned.</p>
+        <p style={{ textAlign: "center", fontSize: "16px", color: "#636e72" }}>
+          No new complaints assigned.
+        </p>
       ) : (
-        <table border="1" cellPadding="8" cellSpacing="0">
-          <thead>
-            <tr>
-              <th>Complaint ID</th>
-              <th>Domain</th>
-              <th>Description</th>
-              <th>Employee Name</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {assignedComplaints.map((complaint) => (
-              <tr key={complaint._id}>
-                <td>{complaint.complaintId}</td>
-                <td>{complaint.domain}</td>
-                <td>{complaint.description}</td>
-                <td>{complaint.employeeName}</td>
-                <td>{complaint.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <>
+          <div className="complaint-list-header">
+            <div>Complaint ID</div>
+            <div>Domain</div>
+            <div>Description</div>
+            <div>Employee</div>
+            <div>Status</div>
+          </div>
+
+          {assignedComplaints.map((complaint) => (
+            <div key={complaint._id} className="complaint-list-row">
+              <div>{complaint.complaintId}</div>
+              <div>{complaint.domain}</div>
+              <div className="desc-cell">{complaint.description}</div>
+              <div>{complaint.employeeName}</div>
+              <div>
+                <span className="assigned-label">{complaint.status}</span>
+              </div>
+            </div>
+          ))}
+        </>
       )}
     </div>
   );

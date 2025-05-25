@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import "./EngineerComplaints.css";
+import "./AttemptedComplaints.css";
 
 const AttemptedComplaints = ({ engineerName }) => {
   const [complaints, setComplaints] = useState([]);
 
-  // Fetch complaints assigned to this engineer
   const fetchData = async () => {
     try {
       const res = await axios.get("http://localhost:5000/api/complaints");
@@ -22,42 +21,46 @@ const AttemptedComplaints = ({ engineerName }) => {
     }
   }, [engineerName]);
 
-  // Update complaint status by complaintId (not Mongo _id)
   const reUpdateStatus = async (complaintId, newStatus) => {
     try {
       await axios.patch(`http://localhost:5000/api/complaints/status/${complaintId}`, {
         status: newStatus,
       });
-      fetchData(); // Refresh list after update
+      fetchData();
     } catch (err) {
       console.error("Error updating status:", err);
     }
   };
 
   return (
-    <div className="engineer-page" style={{ padding: "1rem" }}>
-      <h2>Assigned Complaints</h2>
-      <table border="1" cellPadding="8" cellSpacing="0">
-        <thead>
-          <tr>
-            <th>Complaint ID</th>
-            <th>Domain</th>
-            <th>Description</th>
-            <th>Employee Name</th>
-            <th>Status</th>
-            <th>Re-Update</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div className="attempted-container">
+      <h2 className="attempted-title">Assigned Complaints</h2>
+
+      {complaints.length === 0 ? (
+        <p className="attempted-empty">No complaints found.</p>
+      ) : (
+        <>
+          <div className="attempted-header">
+            <div>Complaint ID</div>
+            <div>Domain</div>
+            <div>Description</div>
+            <div>Employee</div>
+            <div>Status</div>
+            <div>Re-Update</div>
+          </div>
+
           {complaints.map((c) => (
-            <tr key={c._id}>
-              <td>{c.complaintId}</td>
-              <td>{c.domain}</td>
-              <td>{c.description}</td>
-              <td>{c.employeeName}</td>
-              <td>{c.status}</td>
-              <td>
+            <div key={c._id} className="attempted-row">
+              <div>{c.complaintId}</div>
+              <div>{c.domain}</div>
+              <div className="attempted-desc">{c.description}</div>
+              <div>{c.employeeName}</div>
+              <div>
+                <span className="attempted-status">{c.status}</span>
+              </div>
+              <div>
                 <select
+                  className="attempted-select"
                   defaultValue=""
                   onChange={(e) => reUpdateStatus(c.complaintId, e.target.value)}
                 >
@@ -68,11 +71,11 @@ const AttemptedComplaints = ({ engineerName }) => {
                   <option value="Not Able to Complete">Not Able to Complete</option>
                   <option value="In Progress">In Progress</option>
                 </select>
-              </td>
-            </tr>
+              </div>
+            </div>
           ))}
-        </tbody>
-      </table>
+        </>
+      )}
     </div>
   );
 };

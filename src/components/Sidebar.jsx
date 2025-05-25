@@ -1,55 +1,67 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Outlet } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidebar = ({ role }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    navigate("/"); // Return to home
+    navigate("/");
   };
 
   const links = {
     hod: [
-      { path: "/hod/complaints", label: "Complaint List" },
-      { path: "/hod/engineers", label: "Technician List" },
-      { path: "/hod/register", label: "Register Technician" },
+      { path: "/hod/dashboard/complaints", label: "Complaint List" ,dash:"Manager"},
+      { path: "/hod/dashboard/engineers", label: "Technician List" ,dash:"Manager"},
+      { path: "/hod/dashboard/register", label: "Register Technician" ,dash:"Manager"},
     ],
     engineer: [
-      { path: "/engineer/assigned", label: "New Assigned Complaints" },
-      { path: "/engineer/attempted", label: "Attempted Queries" },
-      { path: "/engineer/change-password", label: "Change Password" },
+      { path: "/engineer/dashboard/assigned", label: "New Complaints",dash:"Technician" },
+      { path: "/engineer/dashboard/attempted", label: "Attempted Queries",dash:"Technician" },
+      { path: "/engineer/dashboard/change-password", label: "Change Password", dash:"Technician"},
     ],
     employee: [
-      { path: "/employee/dashboard", label: "Dashboard" },
-      { path: "/employee/submit-complaint", label: "Submit Complaint" }, // ← If you have this
-    ] 
+      { path: "/employee/dashboard", label: "Dashboard",dash:"Employee" },
+      { path: "/employee/dashboard/submit-complaint", label: "Submit Complaint" ,dash:"Employee"},
+    ]
   };
 
   return (
     <div className="dashboard-container">
       <aside className="sidebar">
-        <h2>Dashboard</h2>
+        <h2 id="sidebar-title">Dashboard</h2>
+        
         {links[role].map((link) => (
+          <div className="side-links-container">
           <NavLink
             to={link.path}
             key={link.path}
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
+            id="side-links"
           >
             {link.label}
           </NavLink>
+          
+          </div>
+          
         ))}
-      </aside>
-      <main className="main-content">
-        <div className="top-bar">
-          <h1>Complaint Management System</h1>
-          <button className="logout-button" onClick={handleLogout}>
+        <div className="log-btn-container">
+          <button className="logout-btn" onClick={handleLogout}>
             Logout
-          </button>
+        </button>
         </div>
+      </aside>
 
-      </main>
+    <div className="sidebar-layout">
+      <header className="topbar">
+          
+        </header>
+    {/* Your sidebar JSX here */}
+    <main className="main-content">
+      <Outlet />
+    </main>
+  </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./HODComplaintList.css";
+import "./HODComplaintList.css"; // Updated CSS file
 
 const HODComplaintList = () => {
   const [complaints, setComplaints] = useState([]);
@@ -29,47 +29,47 @@ const HODComplaintList = () => {
   };
 
   return (
-    <div className="complaint-list">
-      <h2>Complaint List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Serial No</th>
-            <th>Type</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Employee Name</th>
-            <th>Assigned Engineer</th>
-            <th>Assign Task</th>
-          </tr>
-        </thead>
-        <tbody>
-          {complaints.map((c, index) => (
-            <tr key={c.complaintId}>
-              <td>{index + 1}</td>
-              <td>{c.domain || "N/A"}</td>
-              <td>{c.description}</td>
-              <td>{c.status}</td>
-              <td>{c.employeeName}</td>
-              <td>{c.assignedEngineer}</td>
-              <td>
-                {c.assignedEngineer === "Not Assigned" ? (
-                  <select onChange={(e) => assignEngineer(c.complaintId, e.target.value)} defaultValue="">
-                    <option value="" disabled>Select Engineer</option>
-                    {engineers.map((eng) => (
-                      <option key={eng._id} value={eng.name}>
-                        {eng.name}
-                      </option>
-                    ))}
-                  </select>
-                ) : (
-                  "Assigned"
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="hod-list-container">
+      <h2 className="hod-list-heading">Complaint List</h2>
+      
+      <div className="hod-list-header">
+        <span>Serial No</span>
+        <span>Type</span>
+        <span>Description</span>
+        <span>Status</span>
+        <span>Employee Name</span>
+        <span>Assigned Engineer</span>
+        <span>Assign Task</span>
+      </div>
+
+      {complaints.map((c, index) => (
+        <div key={c.complaintId} className="hod-list-row">
+          <span>{index + 1}</span>
+          <span>{c.domain || "N/A"}</span>
+          <span className="hod-list-desc">{c.description}</span>
+          <span>{c.status}</span>
+          <span>{c.employeeName}</span>
+          <span>{c.assignedEngineer}</span>
+          <span>
+            {c.assignedEngineer === "Not Assigned" ? (
+              <select
+                onChange={(e) => assignEngineer(c.complaintId, e.target.value)}
+                defaultValue=""
+                className="hod-list-select"
+              >
+                <option value="" disabled>Select Engineer</option>
+                {engineers.map((eng) => (
+                  <option key={eng._id} value={eng.name}>
+                    {eng.name}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <span className="hod-list-assigned">Assigned</span>
+            )}
+          </span>
+        </div>
+      ))}
     </div>
   );
 };

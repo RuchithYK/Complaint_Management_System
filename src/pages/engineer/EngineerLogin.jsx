@@ -11,7 +11,9 @@ const EngineerLogin = ({ setEngineer }) => {
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
+const handleLogout = () => {
+    navigate("/");
+  };
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -33,8 +35,9 @@ const EngineerLogin = ({ setEngineer }) => {
   };
 
   return (
-    <div className="login-page" style={{ padding: "2rem" }}>
-      <h2>Technician Login</h2>
+  <div className="eng-login-page-container">
+    <div className="eng-login-page">
+      <h2 id="eng-login">Technician Login</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleLogin}>
         <input
@@ -44,6 +47,7 @@ const EngineerLogin = ({ setEngineer }) => {
           value={formData.name}
           onChange={handleChange}
           required
+          id="eng-name"
         /><br />
         <input
           type="password"
@@ -52,10 +56,15 @@ const EngineerLogin = ({ setEngineer }) => {
           value={formData.password}
           onChange={handleChange}
           required
+          id="eng-password"
         /><br />
-        <button type="submit">Login</button>
+        <button id="eng-btn" type="submit">Login</button>
+        <button className="logout-btn" onClick={handleLogout}>
+            Home 
+        </button>
       </form>
     </div>
+  </div>  
   );
 };
 

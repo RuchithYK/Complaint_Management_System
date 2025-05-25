@@ -8,6 +8,10 @@ const HODLogin = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const handleLogout = () => {
+    navigate("/");
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -29,8 +33,8 @@ const HODLogin = () => {
   };
 
   return (
-    <div className="login-page">
-      <h2>Manager Login</h2>
+    <div className="hod-login-page">
+      <h2 id="hod-name">Manager Login</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleLogin}>
         <input
@@ -39,6 +43,7 @@ const HODLogin = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+          id="hod-input"
         />
         <input
           type="password"
@@ -46,8 +51,12 @@ const HODLogin = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          id="hod-password"
         />
-        <button type="submit">Login</button>
+        <button id="hod-btn" type="submit">Login</button>
+        <button className="logout-btn" onClick={handleLogout}>
+            Home 
+        </button>
       </form>
     </div>
   );

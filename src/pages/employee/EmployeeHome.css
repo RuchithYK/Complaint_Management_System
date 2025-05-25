@@ -1,0 +1,32 @@
+.employee-home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  background-color: #f0f4f8;
+  padding: 2rem;
+}
+
+.employee-home-card {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.employee-home-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.employee-home-subtitle {
+  font-size: 16px;
+  color: #636e72;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

@@ -1,0 +1,57 @@
+.complaint-list-container {
+  padding: 30px;
+  background-color: #f5f7fa;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.complaint-heading {
+  font-size: 28px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.complaint-list-header,
+.complaint-list-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2.5fr 1fr 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.complaint-list-header {
+  background-color: #dfe6e9;
+  font-weight: bold;
+  color: #2d3436;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.complaint-list-row {
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.complaint-list-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.desc-cell {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.assigned-label {
+  padding: 5px 10px;
+  background-color: #00b894;
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+}
